@@ -45,6 +45,8 @@ public class Space extends JPanel {
     private class ScheduleTask extends TimerTask {
         @Override
         public void run() {
+            wallCollisions(kaito);
+            wallCollisions(despairbot);
             kaito.update();
             despairbot.update();
             repaint();
@@ -95,7 +97,12 @@ public class Space extends JPanel {
             System.out.println("Location: ("+x+", "+y+") "+"Size: "+randSize+" "+"Color: ("+randR+","+randG+","+randB+","+randAlpha+")");
         }
     }
-    private void wallCollissions() {
-        
+    private void wallCollisions(Character c) {
+        if (c.getX() <= 0 || c.getX() >= this.getWidth()-20 ) {
+            c.reverseX();
+        }
+        if (c.getY() <= 0 || c.getY() >= this.getHeight()-20 ) {
+            c.reverseY();
+        }
     }
 }

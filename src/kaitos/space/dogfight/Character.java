@@ -95,16 +95,16 @@ public class Character {
     }
     
     public void move(int dx, int dy) {
-        x += dx * 5;
-        y += dy * 5;
+        x += dx * 8;
+        y += dy * 8;
     }
     
     public void reverseX() {
-        
+        x *= -1;
     }
     
     public void reverseY() {
-        
+        y *= -1;
     }
     
     public void update() {

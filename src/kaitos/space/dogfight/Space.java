@@ -47,6 +47,7 @@ public class Space extends JPanel {
         public void run() {
             wallCollisions(kaito);
             wallCollisions(despairbot);
+            protagVsEnemy(kaito,despairbot);            
             kaito.update();
             despairbot.update();
             repaint();
@@ -97,6 +98,15 @@ public class Space extends JPanel {
             System.out.println("Location: ("+x+", "+y+") "+"Size: "+randSize+" "+"Color: ("+randR+","+randG+","+randB+","+randAlpha+")");
         }
     }
+    
+    private void protagVsEnemy(Protag p, Enemy e) {
+        if ((p.getX() + 20) >= e.getX() && (p.getY() + 20) >= e.getY()) {
+            if (p.getX() <= (e.getX() + 20) && p.getY() <= (e.getY() + 20)) {
+                e.kill(e);
+            }
+        }  
+    }
+    
     private void wallCollisions(Character c) {
         if (c.getX() <= 0 || c.getX() >= this.getWidth()-20 ) {
             c.reverseX();

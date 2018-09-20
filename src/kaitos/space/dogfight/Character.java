@@ -90,8 +90,8 @@ public class Character {
         g.fill3DRect(x, y, size, size, true);
     }
     
-    public void kill () {
-        grow();
+    public void kill (Character c) {
+        c.setSize(0);
     }
     
     public void move(int dx, int dy) {
@@ -100,11 +100,13 @@ public class Character {
     }
     
     public void reverseX() {
-        x *= -1;
+        dx = -dx;
+        move(2 * dx, dy);
     }
     
     public void reverseY() {
-        y *= -1;
+        dy *= -dy;
+        move (dx, 2 * dy);
     }
     
     public void update() {

@@ -100,9 +100,10 @@ public class Space extends JPanel {
     }
     
     private void protagVsEnemy(Protag p, Enemy e) {
-        if ((p.getX() + 20) >= e.getX() && (p.getY() + 20) >= e.getY()) {
-            if (p.getX() <= (e.getX() + 20) && p.getY() <= (e.getY() + 20)) {
+        if ((p.getX() + p.getSize()) >= e.getX() && (p.getY() + p.getSize()) >= e.getY()) {
+            if (p.getX() <= (e.getX() + e.getSize()) && p.getY() <= (e.getY() + e.getSize())) {
                 e.kill(e);
+                e.setX(-2000);
             }
         }  
     }
